@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -25,6 +27,7 @@ namespace Calculator
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var buttonValue = (e.Source as Button).Content.ToString();
+            char currentOperator = hasCalcOperator();
 
             if (isActionOperator(buttonValue))
                 return;
@@ -33,6 +36,14 @@ namespace Calculator
             {
                 display.Text = buttonValue;
                 displayingResult = false;
+            }
+            else if (isCalcOperator(buttonValue) && currentOperator != '0')
+            {
+                int indexOfOperator = display.Text.IndexOf(currentOperator);
+                var displaySB = new StringBuilder(display.Text);
+                displaySB[indexOfOperator] = Convert.ToChar(buttonValue);
+
+                display.Text = displaySB.ToString();
             }
             else
                 display.Text += buttonValue;
@@ -103,6 +114,23 @@ namespace Calculator
                 default:
                     return false;
             }
+        }
+
+        private char hasCalcOperator()
+        {
+            if (display.Text.Contains('+'))
+                return '+';
+
+            if (display.Text.Contains('-'))
+                return '-';
+
+            if (display.Text.Contains('×'))
+                return '×';
+
+            if (display.Text.Contains('÷'))
+                return '÷';
+
+            return '0';
         }
     }
 }
