@@ -45,18 +45,27 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Border Background="#222" Grid.Column="0" Grid.ColumnSpan="4" />
-        <TextBox x:Name="display"
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="4">
+            <TextBox x:Name="topDisplay"
             HorizontalAlignment="Right"
             IsReadOnly="True" TextWrapping="Wrap"
-            VerticalAlignment="Center" Width="360" 
-            TextAlignment="Right" FontSize="45"
-            Grid.Column="0" Grid.ColumnSpan="4" 
+            VerticalAlignment="Top" Width="360" 
+            TextAlignment="Right" FontSize="30" 
             Background="#00000000" BorderBrush="#00000000"
-            Foreground="White"
+            Foreground="#AAA"
+            />
+            <TextBox x:Name="bottomDisplay"
+            HorizontalAlignment="Right"
+            IsReadOnly="True" TextWrapping="Wrap"
+            VerticalAlignment="Bottom" Width="360" 
+            TextAlignment="Right" FontSize="45" 
+            Background="#00000000" BorderBrush="#00000000" 
+            Foreground="White" Margin="20, 40"
         />
+        </StackPanel>
 
-        <Button x:Name="clear" Grid.Row="1" Background="#333">CE</Button>
-        <Button x:Name="clear2" Grid.Row="1" Grid.Column="1" Background="#333">C</Button>
+        <Button x:Name="clearAll" Grid.Row="1" Background="#333">CE</Button>
+        <Button x:Name="clear" Grid.Row="1" Grid.Column="1" Background="#333">C</Button>
         <Button x:Name="delete" Grid.Row="1" Grid.Column="2" Background="#333">Del</Button>
         
         <Button Grid.Row="1" Grid.Column="3" Background="#333">÷</Button>
